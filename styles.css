@@ -30,3 +30,19 @@ body {
   align-items: center;
   font-size: 100px;
 }
+
+.reset {
+  border-radius: 10%;
+  padding: 10px;
+  margin: 20px;
+  background-color: wheat;
+  font-weight: bolder;
+}
+
+.reset:hover {
+  background-color: rgb(251, 244, 231);
+  padding: 12px;
+}
+.hidden {
+  display: none;
+}

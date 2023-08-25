@@ -1,3 +1,6 @@
+const reset = document.querySelector(".reset");
+const cells = document.querySelectorAll(".cell");
+
 //1 GAMEBOARD
 let playing = true;
 let board = ["", "", "", "", "", "", "", "", ""];
@@ -30,6 +33,7 @@ function checkForWinner() {
       document.querySelector(
         ".message"
       ).textContent = `${currentPlayer.name} WINS!`;
+      reset.classList.remove("hidden");
     }
   }
   playing = false;
@@ -39,9 +43,23 @@ function checkForWinner() {
 //3 PLAYER START
 let currentPlayer = players[0];
 
+//RESET GAME
+function newGame() {
+  currentPlayer = players[0];
+  board = ["", "", "", "", "", "", "", "", ""];
+  document.querySelector(".message").textContent = "";
+  reset.classList.add("hidden");
+}
+
+reset.addEventListener("click", () => {
+  cells.forEach((cell) => {
+    cell.textContent = "";
+    newGame();
+  });
+});
+
 //4 SELECTION
 if (playing) {
-  const cells = document.querySelectorAll(".cell");
   cells.forEach((cell) => {
     cell.addEventListener("click", () => {
       const tableId = cell.getAttribute("data-table-id");
